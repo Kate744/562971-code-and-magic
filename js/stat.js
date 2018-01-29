@@ -1,11 +1,5 @@
-//'use strict'; это нужно указывать или нет?
+'use strict';
 
-//var canvas = document.getElementById('myCanvas');
-//var ctx = canvas.getContext('2d');
-
-
-
-var ctx = canvas.getContext('2d');
 
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
@@ -25,37 +19,41 @@ var players = ['Вы', 'Вася', 'Андрей', 'Саша'];
 var times = [1500, 2300, 1750, 2930];
 
 
-var renderCloud = function(ctx, x, y, color) {
-  ctx.fillStyle = color;
+var renderCloud = function (ctx, x, y) {
+
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-var getMaxElement = function(arr) {
-  var maxElement = arr[0];
+var getMaxElement = function () {
+  var maxElement = times[0];
 
-  for (var i = 1; i < arr.length; i++) {
-    if (arr[i] > maxElement) {
-      maxElement = arr[i];
+  for (var i = 1; i < times.length; i++) {
+    if (times[i] > maxElement) {
+      maxElement = times[i];
     }
   }
 
   return maxElement;
 };
 
-window.renderStatistics = function(ctx, players, times) {
-  renderCloud(ctx, START_POINT_X + 10, START_POINT_Y + 10, 'rgba(0, 0, 0, 0.7)');
+window.renderStatistics = function (ctx) {
+  var color = ctx.fillStyle;
+  renderCloud(ctx, START_POINT_X + 10, START_POINT_Y + 10, color);
   renderCloud(ctx, START_POINT_X, START_POINT_Y, 'white');
   ctx.font = 'FONT_SIZEpx PT Mono';
   ctx.fillText('Ура вы победили!', GAP_TO_CENTER_TEXT_BEFORE_X, GAP_TO_CENTER_TEXT_BEFORE_Y);
   ctx.fillText('Список результатов:', GAP_TO_CENTER_TEXT_BEFORE_X, THE_END_OF_THE_PART_OF_TEXT_Y);
 
-  ctx.fillStyle = rgba(255, 0, 0, 1);
+
+  if (players [i] !== 'Вы') {
+    color = 'rgb(0, 0, 128, Math.random())';
+  } else {
+    color = 'rgba(255, 0, 0, 1)';
+  }
 
   var maxTime = getMaxElement(times);
-
-
   for (var i = 0; i < players.length; i++) {
-  ctx.fillText(players[i], player-index * WIDTH_OF_SECTION, CLOUD_HEIGHT - GAP - FONT_SIZE);
-  ctx.fillRect(GAP + player-index * WIDTH_OF_SECTION , THE_END_OF_THE_PART_OF_TEXT_Y + GAP, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
-}
-}
+    ctx.fillText(players[i], players[i] * WIDTH_OF_SECTION, CLOUD_HEIGHT - GAP - FONT_SIZE);
+    ctx.fillRect(GAP + players[i] * WIDTH_OF_SECTION, THE_END_OF_THE_PART_OF_TEXT_Y + GAP, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
+  }
+};
