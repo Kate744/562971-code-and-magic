@@ -1,6 +1,10 @@
-'use strict';
+//'use strict'; это нужно указывать или нет?
 
-var canvas = document.getElementById('myCanvas');
+//var canvas = document.getElementById('myCanvas');
+//var ctx = canvas.getContext('2d');
+
+
+
 var ctx = canvas.getContext('2d');
 
 var CLOUD_WIDTH = 420;
@@ -41,7 +45,7 @@ var getMaxElement = function(arr) {
 window.renderStatistics = function(ctx, players, times) {
   renderCloud(ctx, START_POINT_X + 10, START_POINT_Y + 10, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, START_POINT_X, START_POINT_Y, 'white');
-  ctx.font = FONT_SIZE'px PT Mono';
+  ctx.font = 'FONT_SIZEpx PT Mono';
   ctx.fillText('Ура вы победили!', GAP_TO_CENTER_TEXT_BEFORE_X, GAP_TO_CENTER_TEXT_BEFORE_Y);
   ctx.fillText('Список результатов:', GAP_TO_CENTER_TEXT_BEFORE_X, THE_END_OF_THE_PART_OF_TEXT_Y);
 
@@ -52,12 +56,6 @@ window.renderStatistics = function(ctx, players, times) {
 
   for (var i = 0; i < players.length; i++) {
   ctx.fillText(players[i], player-index * WIDTH_OF_SECTION, CLOUD_HEIGHT - GAP - FONT_SIZE);
-  ctx.fillRect(GAP + player-index * WIDTH_OF_SECTION , THE_END_OF_THE_PART_OF_TEXT_Y + GAP, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime));
+  ctx.fillRect(GAP + player-index * WIDTH_OF_SECTION , THE_END_OF_THE_PART_OF_TEXT_Y + GAP, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
 }
-
-
-
-
-
-
 }
