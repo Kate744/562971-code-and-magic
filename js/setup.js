@@ -9,8 +9,8 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template').c
 
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
+var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var getRandomElement = function (x) {
   var randomNumber = Math.round(Math.random() * (x - 1));
@@ -19,8 +19,8 @@ var getRandomElement = function (x) {
 
 var getWizard = function () {
   return {name: WIZARD_NAMES[getRandomElement(WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomElement(WIZARD_SURNAMES.length)],
-    coatColor: coatColors[getRandomElement(coatColors.length)],
-    eyesColor: eyesColors[getRandomElement(eyesColors.length)]};
+    coatColor: COAT_COLORS[getRandomElement(COAT_COLORS.length)],
+    eyesColor: EYES_COLORS[getRandomElement(EYES_COLORS.length)]};
 };
 
 var renderWizard = function (wizard) {
