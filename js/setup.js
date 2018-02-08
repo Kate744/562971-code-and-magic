@@ -51,27 +51,26 @@ var setupClose = setup.querySelector('.setup-close');
 var wizardCoat = document.querySelector('.setup-player').querySelector('.wizard-coat');
 var wizardEyes = document.querySelector('.setup-player').querySelector('.wizard-eyes');
 var fireballWrap = document.querySelector('.setup-fireball-wrap').querySelector('.setup-fireball');
-var formOfName = document.querySelector('.setup-title').querySelector('.setup-user-name');
 var submitIt = document.querySelector('.setup-footer').querySelector('.setup-submit');
 
 
-var onPopupEscPress = function (evt) {
+var onPopupEnterPress = function (evt) {
   if (setupClose === document.activeElement) {
     if (evt.keyCode === ENTER_KEYCODE) {
       closePopup();
     }
   }
-  if (formOfName === document.activeElement) {
-    return evt;
-  } else {
-    if (evt.keyCode === ESC_KEYCODE) {
-      closePopup();
-    }
-  }
+
   if (submitIt === document.activeElement) {
     if (evt.keyCode === ENTER_KEYCODE) {
       onSaveClick();
     }
+  }
+};
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
   }
 };
 
@@ -83,11 +82,13 @@ submitIt.addEventListener('click', onSaveClick);
 var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
+  document.addEventListener('keydown', onPopupEnterPress);
 };
 
 var closePopup = function () {
   setup.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
+  document.addEventListener('keydown', onPopupEnterPress);
 };
 
 setupOpen.addEventListener('click', function () {
@@ -95,7 +96,7 @@ setupOpen.addEventListener('click', function () {
 });
 
 setupOpen.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER_KEYCODE) {
+  if (evt.keyCode === ESC_KEYCODE) {
     openPopup();
   }
 });
