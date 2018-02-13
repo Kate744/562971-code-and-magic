@@ -1,7 +1,7 @@
 
 'use strict';
 
-document.querySelector('.setup').classList.remove('hidden');
+// document.querySelector('.setup').classList.remove('hidden');
 document.querySelector('.setup-similar').classList.remove('hidden');
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
@@ -12,6 +12,7 @@ var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', '�
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var COUNT = 4;
 
 var getRandomElement = function (x) {
   var randomNumber = Math.round(Math.random() * (x - 1));
@@ -34,7 +35,7 @@ var renderWizard = function (wizard) {
 };
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < COUNT; i++) {
   fragment.appendChild(renderWizard(getWizard()));
 }
 
@@ -71,6 +72,7 @@ var onPopupEscPress = function (evt) {
       closePopup();
     }
   }
+  return true;
 };
 
 var openPopup = function () {
