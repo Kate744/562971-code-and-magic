@@ -46,24 +46,17 @@ var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
 var setup = document.querySelector('.setup');
-var setupOpen = document.querySelector('.setup-open');
+var setupOpen = setup.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 var wizardCoat = document.querySelector('.setup-player').querySelector('.wizard-coat');
 var wizardEyes = document.querySelector('.setup-player').querySelector('.wizard-eyes');
 var fireballWrap = document.querySelector('.setup-fireball-wrap').querySelector('.setup-fireball');
-var submitIt = document.querySelector('.setup-footer').querySelector('.setup-submit');
 
 
 var onPopupEnterPress = function (evt) {
   if (setupClose === document.activeElement) {
     if (evt.keyCode === ENTER_KEYCODE) {
       closePopup();
-    }
-  }
-
-  if (submitIt === document.activeElement) {
-    if (evt.keyCode === ENTER_KEYCODE) {
-      onSaveClick();
     }
   }
 };
@@ -73,11 +66,6 @@ var onPopupEscPress = function (evt) {
     closePopup();
   }
 };
-
-var onSaveClick = function () {
-  submitIt.submit();
-};
-submitIt.addEventListener('click', onSaveClick);
 
 var openPopup = function () {
   setup.classList.remove('hidden');
